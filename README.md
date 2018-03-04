@@ -78,3 +78,18 @@ responsive_images:
       thumb:
         width: 900
 ```
+
+## View helper
+
+To get the responsive image URL you can just refer to it's prefixed version. 
+For a programmatic usage, you can use a view helper:
+
+```
+image_version(image_path, {prefix: ''})
+```
+
+For example:
+
+```
+image_version('content/photo.jpg', {prefix: 'small') // 'content/small_photo.jpg'
+```
