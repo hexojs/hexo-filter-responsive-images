@@ -91,5 +91,7 @@ image_version(image_path, {prefix: ''})
 For example:
 
 ```
-image_version('content/photo.jpg', {prefix: 'small') // 'content/small_photo.jpg'
+image_version('content/photo.jpg', {prefix: 'small') 
 ```
+
+It returns `'content/small_photo.jpg'`
