@@ -18,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/ertrzyiks/hexo-responsive-images/issues"
   },
-  "homepage": "https://github.com/ertrzyiks/hexo-responsive-images#readme"
+  "homepage": "https://github.com/ertrzyiks/hexo-responsive-images#readme",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "minimatch": "^3.0.4",
+    "sharp": "^0.19.1",
+    "stream-to-array": "^2.3.0"
+  }
 }
