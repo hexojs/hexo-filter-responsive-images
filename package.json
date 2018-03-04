@@ -1,0 +1,22 @@
+{
+  "name": "hexo-responsive-images",
+  "version": "1.0.0",
+  "description": "Generate mutliple version of images for responsive Hexo blogs",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ertrzyiks/hexo-responsive-images.git"
+  },
+  "author": "ertrzyiks <mateusz.derks@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ertrzyiks/hexo-responsive-images/issues"
+  },
+  "homepage": "https://github.com/ertrzyiks/hexo-responsive-images#readme"
+}
