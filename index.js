@@ -6,4 +6,4 @@ hexo.extend.helper.register('image_version', function (original, options) {
 });
 
 
-hexo.extend.filter.register('after_generate', generateResponsiveImages)
+hexo.extend.filter.register('after_generate', generateResponsiveImages, 9)
