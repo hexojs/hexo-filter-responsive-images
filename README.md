@@ -1,4 +1,4 @@
-# hexo-responsive-images
+# hexo-filter-responsive-images
 
 Generate mutliple versions of images for responsive Hexo 3.x blogs
 
@@ -10,7 +10,7 @@ It depends on [sharp](https://github.com/lovell/sharp), so doesn't require Image
 ## Installation
 
 ```
-npm i hexo-responsive-images --save
+npm i hexo-filter-responsive-images --save
 ```
 
 ## Configuration
