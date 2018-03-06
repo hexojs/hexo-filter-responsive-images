@@ -7,7 +7,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava specs/*_spec.js"
   },
   "repository": {
     "type": "git",
@@ -27,5 +27,9 @@
     "minimatch": "^3.0.4",
     "sharp": "^0.19.1",
     "stream-to-array": "^2.3.0"
+  },
+  "devDependencies": {
+    "ava": "^1.0.0-beta.3",
+    "hexo": "^3.6.0"
   }
 }
