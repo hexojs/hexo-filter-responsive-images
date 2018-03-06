@@ -1,5 +1,7 @@
 # hexo-filter-responsive-images
 
+![](https://travis-ci.org/ertrzyiks/hexo-filter-responsive-images.svg?branch=master)
+
 Generate mutliple versions of images for responsive Hexo 3.x blogs
 
 Similar to [hexo-img-optimization](https://github.com/vkuznecovas/hexo-img-optimization), but is
