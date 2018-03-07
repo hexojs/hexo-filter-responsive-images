@@ -1,6 +1,8 @@
 var generateResponsiveImages = require('./lib/responsive_images')
 var getNewPath = require('./lib/new_path')
 
+console.log('HELLO', 'register')
+
 hexo.extend.helper.register('image_version', function (original, options) {
   return getNewPath(original, options)
 });

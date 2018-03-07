@@ -1,16 +1,10 @@
 import test from 'ava'
-import path from 'path'
 import sharp from 'sharp'
 
-import {createHexoSandbox} from './support/hexo_test_utils'
+import getSandbox from './support/sandbox'
 import {mockConfig, process, hasRoute, contentFor} from './support/hexo_test_utils/functions'
 
-const sandbox = createHexoSandbox({
-  fixture_folder: path.join(__dirname, 'fixtures'),
-  plugins: [
-    path.join(__dirname, '..', 'index.js')
-  ]
-})
+const sandbox = getSandbox()
 
 function getImageDimensions(buffer) {
   return sharp(buffer).metadata().then(({width, height}) => {
