@@ -97,3 +97,12 @@ image_version('content/photo.jpg', {prefix: 'small')
 ```
 
 It returns `'content/small_photo.jpg'`
+
+
+## Development
+
+To run specs use:
+
+```
+npm test
+```
