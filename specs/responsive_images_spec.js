@@ -53,4 +53,52 @@ test('renders resized asset', t => {
     })
 })
 
+test('renders resized asset by pattern', t => {
+  const ctx = sandbox('test2')
 
+  mockConfig(ctx, 'responsive_images', {
+    pattern: '*_1.png',
+    sizes: {
+      thumb: {width: 100}
+    }
+  })
+
+  t.plan(4)
+  return process(ctx)
+    .then(ctx => {
+      t.is(hasRoute(ctx, 'image_1.png'), true)
+      t.is(hasRoute(ctx, 'thumb_image_1.png'), true)
+      t.is(hasRoute(ctx, 'image_2.png'), true)
+      t.is(hasRoute(ctx, 'thumb_image_2.png'), false)
+    })
+})
+
+test('renders resized assets using array of rules', t => {
+  const ctx = sandbox('test2')
+
+  mockConfig(ctx, 'responsive_images', [
+    {
+      pattern: '*_1.png',
+      sizes: {
+        super_small: {width: 10}
+      }
+    },
+    {
+      pattern: '*.png',
+      sizes: {
+        thumb: {width: 100}
+      }
+    },
+  ])
+
+  t.plan(6)
+  return process(ctx)
+    .then(ctx => {
+      t.is(hasRoute(ctx, 'image_1.png'), true)
+      t.is(hasRoute(ctx, 'thumb_image_1.png'), true)
+      t.is(hasRoute(ctx, 'super_small_image_1.png'), true)
+      t.is(hasRoute(ctx, 'image_2.png'), true)
+      t.is(hasRoute(ctx, 'thumb_image_2.png'), true)
+      t.is(hasRoute(ctx, 'super_small_image_2.png'), false)
+    })
+})
