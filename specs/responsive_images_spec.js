@@ -2,7 +2,8 @@ import test from 'ava'
 import sharp from 'sharp'
 
 import getSandbox from './support/sandbox'
-import {mockConfig, process, hasRoute, contentFor} from './support/hexo_test_utils/functions'
+import {process, mockConfig} from 'hexo-test-utils/core'
+import {hasRoute, contentFor} from 'hexo-test-utils/routing'
 
 const sandbox = getSandbox()
 
