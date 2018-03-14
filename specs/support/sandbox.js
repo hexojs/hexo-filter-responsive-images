@@ -1,8 +1,9 @@
-const {createHexoSandbox} = require('./hexo_test_utils')
+const Hexo = require('hexo')
+const {createSandbox} = require('hexo-test-utils')
 const path = require('path')
 
 module.exports = function getSandbox() {
-  return  createHexoSandbox({
+  return createSandbox(Hexo, {
     fixture_folder: path.join(__dirname, '..','fixtures'),
     plugins: [
       path.join(__dirname, '..', '..','index.js')

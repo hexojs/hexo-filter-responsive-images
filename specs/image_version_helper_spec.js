@@ -1,7 +1,8 @@
 import test from 'ava'
 
 import getSandbox from './support/sandbox'
-import {process, hasHelper, getHelper} from './support/hexo_test_utils/functions'
+import {process} from 'hexo-test-utils/core'
+import {hasHelper, getHelper} from 'hexo-test-utils/helpers'
 
 const sandbox = getSandbox()
 
