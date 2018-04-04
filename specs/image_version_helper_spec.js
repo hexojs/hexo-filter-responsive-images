@@ -6,17 +6,16 @@ import {hasHelper, getHelper} from 'hexo-test-utils/helpers'
 
 const sandbox = getSandbox()
 
-test('returns prefixed version of the filename', t => {
-  const ctx = sandbox()
+test('returns prefixed version of the filename', async t => {
+  const ctx = await sandbox()
 
-  t.plan(4)
-  return process(ctx).then(() => {
-    t.is(hasHelper(ctx, 'image_version'), true)
+  await process(ctx)
 
-    const imageVersion = getHelper(ctx, 'image_version')
+  t.is(hasHelper(ctx, 'image_version'), true)
 
-    t.is(imageVersion('my/file.jpg', {prefix: 'thumb'}), 'my/thumb_file.jpg')
-    t.is(imageVersion('my/file.jpg', {prefix: 'small'}), 'my/small_file.jpg')
-    t.is(imageVersion('file.jpg', {prefix: 'big'}), 'big_file.jpg')
-  })
+  const imageVersion = getHelper(ctx, 'image_version')
+
+  t.is(imageVersion('my/file.jpg', {prefix: 'thumb'}), 'my/thumb_file.jpg')
+  t.is(imageVersion('my/file.jpg', {prefix: 'small'}), 'my/small_file.jpg')
+  t.is(imageVersion('file.jpg', {prefix: 'big'}), 'big_file.jpg')
 })

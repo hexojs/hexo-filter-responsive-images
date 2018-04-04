@@ -32,6 +32,6 @@
   "devDependencies": {
     "ava": "^1.0.0-beta.3",
     "hexo": "^3.6.0",
-    "hexo-test-utils": "0.0.1"
+    "hexo-test-utils": "0.0.3"
   }
 }
