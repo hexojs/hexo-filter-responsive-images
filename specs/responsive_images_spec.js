@@ -13,8 +13,8 @@ function getImageDimensions(buffer) {
   })
 }
 
-test('renders prefixed asset', t => {
-  const ctx = sandbox('test1')
+test('renders prefixed asset', async t => {
+  const ctx = await sandbox('test1')
 
   mockConfig(ctx, 'responsive_images', {
     pattern: '*.png',
@@ -25,17 +25,15 @@ test('renders prefixed asset', t => {
     }
   })
 
-  t.plan(3)
-  return process(ctx)
-    .then(ctx => {
-      t.is(hasRoute(ctx, 'thumb_image.png'), true)
-      t.is(hasRoute(ctx, 'small_image.png'), true)
-      t.is(hasRoute(ctx, 'huge_image.png'), true)
-    })
+  await process(ctx)
+
+  t.is(hasRoute(ctx, 'thumb_image.png'), true)
+  t.is(hasRoute(ctx, 'small_image.png'), true)
+  t.is(hasRoute(ctx, 'huge_image.png'), true)
 })
 
-test('renders resized asset', t => {
-  const ctx = sandbox('test1')
+test('renders resized asset', async t => {
+  const ctx = await sandbox('test1')
 
   mockConfig(ctx, 'responsive_images', {
     pattern: '*.png',
@@ -44,18 +42,15 @@ test('renders resized asset', t => {
     }
   })
 
-  t.plan(2)
-  return process(ctx)
-    .then(ctx => contentFor(ctx, 'thumb_image.png'))
-    .then(buffer => getImageDimensions(buffer))
-    .then(({width, height}) => {
-      t.is(width, 100)
-      t.is(height, 100)
-    })
+  await process(ctx)
+  const buffer = await contentFor(ctx, 'thumb_image.png')
+  const {width, height} = await getImageDimensions(buffer)
+  t.is(width, 100)
+  t.is(height, 100)
 })
 
-test('renders resized asset by pattern', t => {
-  const ctx = sandbox('test2')
+test('renders resized asset by pattern', async t => {
+  const ctx = await sandbox('test2')
 
   mockConfig(ctx, 'responsive_images', {
     pattern: '*_1.png',
@@ -64,18 +59,15 @@ test('renders resized asset by pattern', t => {
     }
   })
 
-  t.plan(4)
-  return process(ctx)
-    .then(ctx => {
-      t.is(hasRoute(ctx, 'image_1.png'), true)
-      t.is(hasRoute(ctx, 'thumb_image_1.png'), true)
-      t.is(hasRoute(ctx, 'image_2.png'), true)
-      t.is(hasRoute(ctx, 'thumb_image_2.png'), false)
-    })
+  await process(ctx)
+  t.is(hasRoute(ctx, 'image_1.png'), true)
+  t.is(hasRoute(ctx, 'thumb_image_1.png'), true)
+  t.is(hasRoute(ctx, 'image_2.png'), true)
+  t.is(hasRoute(ctx, 'thumb_image_2.png'), false)
 })
 
-test('renders resized assets using array of rules', t => {
-  const ctx = sandbox('test2')
+test('renders resized assets using array of rules', async t => {
+  const ctx = await sandbox('test2')
 
   mockConfig(ctx, 'responsive_images', [
     {
@@ -89,17 +81,90 @@ test('renders resized assets using array of rules', t => {
       sizes: {
         thumb: {width: 100}
       }
-    },
+    }
   ])
 
-  t.plan(6)
-  return process(ctx)
-    .then(ctx => {
-      t.is(hasRoute(ctx, 'image_1.png'), true)
-      t.is(hasRoute(ctx, 'thumb_image_1.png'), true)
-      t.is(hasRoute(ctx, 'super_small_image_1.png'), true)
-      t.is(hasRoute(ctx, 'image_2.png'), true)
-      t.is(hasRoute(ctx, 'thumb_image_2.png'), true)
-      t.is(hasRoute(ctx, 'super_small_image_2.png'), false)
-    })
+  await process(ctx)
+  t.is(hasRoute(ctx, 'image_1.png'), true)
+  t.is(hasRoute(ctx, 'thumb_image_1.png'), true)
+  t.is(hasRoute(ctx, 'super_small_image_1.png'), true)
+  t.is(hasRoute(ctx, 'image_2.png'), true)
+  t.is(hasRoute(ctx, 'thumb_image_2.png'), true)
+  t.is(hasRoute(ctx, 'super_small_image_2.png'), false)
+})
+
+test('uses the priority from the configuration when it is higher', async t => {
+  const ctx = await sandbox('test2')
+
+  ctx.extend.filter.register('after_generate', () => {
+    ctx.route.remove('image_2.png')
+  }, 10)
+
+  mockConfig(ctx, 'responsive_images', {
+    priority: 11,
+    rules: [
+      {
+        pattern: '*.png',
+        sizes: {
+          super_small: {width: 10}
+        }
+      }
+    ]
+  })
+
+  await process(ctx)
+
+  t.is(hasRoute(ctx, 'image_1.png'), true)
+  t.is(hasRoute(ctx, 'super_small_image_1.png'), true)
+  t.is(hasRoute(ctx, 'image_2.png'), false)
+  t.is(hasRoute(ctx, 'super_small_image_2.png'), false)
+})
+
+test('uses the priority from the configuration when it is lower', async t => {
+  const ctx = await sandbox('test2')
+
+  ctx.extend.filter.register('after_generate', () => {
+    ctx.route.remove('image_2.png')
+  }, 10)
+
+  mockConfig(ctx, 'responsive_images', {
+    priority: 9,
+    rules: [
+      {
+        pattern: '*.png',
+        sizes: {
+          super_small: {width: 10}
+        }
+      }
+    ]
+  })
+
+  await process(ctx)
+
+  t.is(hasRoute(ctx, 'image_1.png'), true)
+  t.is(hasRoute(ctx, 'super_small_image_1.png'), true)
+  t.is(hasRoute(ctx, 'image_2.png'), false)
+  t.is(hasRoute(ctx, 'super_small_image_2.png'), true)
+})
+
+test('uses the priority from the configuration when it is default', async t => {
+  const ctx = await sandbox('test2')
+
+  ctx.extend.filter.register('after_generate', () => {
+    ctx.route.remove('image_2.png')
+  }, 10)
+
+  mockConfig(ctx, 'responsive_images', {
+    pattern: '*.png',
+    sizes: {
+      super_small: {width: 10}
+    }
+  })
+
+  await process(ctx)
+
+  t.is(hasRoute(ctx, 'image_1.png'), true)
+  t.is(hasRoute(ctx, 'super_small_image_1.png'), true)
+  t.is(hasRoute(ctx, 'image_2.png'), false)
+  t.is(hasRoute(ctx, 'super_small_image_2.png'), true)
 })

@@ -46,6 +46,19 @@ Put a size name as a key. It will be used as a prefix for the generated file nam
 Use width and height keys to configure dimensions. Skip one for auto-scale.
 For more information and all possible values for `options` check http://sharp.pixelplumbing.com/en/stable/api-resize/
 
+### Priority
+
+Optionally, you can put `pattern` and `sizes` configuration under `rules` key and use `priority` option to
+set the priority of `after_generate` filter. Can be handy, if you want to control the order of filters executed
+on your files.
+
+```
+priority: 9
+rules: ...
+```
+
+You can find more information about priority in [Filter](https://hexo.io/api/filter.html) documentation.
+
 ### Examples
 
 Single pattern:
@@ -84,6 +97,23 @@ responsive_images:
     sizes:
       thumb:
         width: 900
+```
+
+And the example with priority:
+```
+responsive_images:
+  priority: 9
+  rules:
+    - pattern: content/squares/*.jpg
+      sizes:
+        square:
+          width: 200
+          height: 200
+
+    - pattern: content/**/*.+(png|jpg|jpeg)
+      sizes:
+        thumb:
+          width: 900
 ```
 
 ## View helper
