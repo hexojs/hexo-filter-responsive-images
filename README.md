@@ -63,7 +63,7 @@ Single pattern:
 
 ```
 responsive_images:
-  pattern: content/**/*.+(png|jpg|jpeg)
+  pattern: '**/*.+(png|jpg|jpeg)'
   sizes:
     small:
       width: 800
@@ -85,13 +85,13 @@ You can also use multiple patterns:
 
 ```
 responsive_images:
-  - pattern: content/squares/*.jpg
+  - pattern: squares/*.jpg
     sizes:
       square:
         width: 200
         height: 200
         
-  - pattern: content/**/*.+(png|jpg|jpeg)
+  - pattern: '**/*.+(png|jpg|jpeg)'
     sizes:
       thumb:
         width: 900
@@ -102,13 +102,13 @@ And the example with priority:
 responsive_images:
   priority: 9
   rules:
-    - pattern: content/squares/*.jpg
+    - pattern: squares/*.jpg
       sizes:
         square:
           width: 200
           height: 200
 
-    - pattern: content/**/*.+(png|jpg|jpeg)
+    - pattern: '**/*.+(png|jpg|jpeg)'
       sizes:
         thumb:
           width: 900
@@ -126,10 +126,10 @@ image_version(image_path, {prefix: ''})
 For example:
 
 ```
-image_version('content/photo.jpg', {prefix: 'small') 
+image_version('photo.jpg', {prefix: 'small')
 ```
 
-It returns `'content/small_photo.jpg'`
+It returns `'small_photo.jpg'`
 
 
 ## Development
