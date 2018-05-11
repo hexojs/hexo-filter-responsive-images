@@ -49,6 +49,23 @@ test('renders resized asset', async t => {
   t.is(height, 100)
 })
 
+test('upscales resized asset', async t => {
+  const ctx = await sandbox('test1')
+
+  mockConfig(ctx, 'responsive_images', {
+    pattern: '*.png',
+    sizes: {
+      thumb: {width: 1000}
+    }
+  })
+
+  await process(ctx)
+  const buffer = await contentFor(ctx, 'thumb_image.png')
+  const {width, height} = await getImageDimensions(buffer)
+  t.is(width, 1000)
+  t.is(height, 1000)
+})
+
 test('renders resized asset by pattern', async t => {
   const ctx = await sandbox('test2')
 
@@ -167,4 +184,85 @@ test('uses the priority from the configuration when it is default', async t => {
   t.is(hasRoute(ctx, 'super_small_image_1.png'), true)
   t.is(hasRoute(ctx, 'image_2.png'), false)
   t.is(hasRoute(ctx, 'super_small_image_2.png'), true)
+})
+
+test('handles withoutEnlargement', async t => {
+  const ctx = await sandbox('test1')
+
+  mockConfig(ctx, 'responsive_images', {
+    pattern: '*.png',
+    sizes: {
+      thumb: {width: 1000, withoutEnlargement: true}
+    }
+  })
+
+  await process(ctx)
+  const buffer = await contentFor(ctx, 'thumb_image.png')
+  const {width, height} = await getImageDimensions(buffer)
+  t.is(width, 600)
+  t.is(height, 600)
+})
+
+test('handles embed', async t => {
+  const ctx = await sandbox('test1')
+
+  mockConfig(ctx, 'responsive_images', {
+    pattern: '*.png',
+    sizes: {
+      thumb: {width: 100, height: 50, embed: true}
+    }
+  })
+
+  await process(ctx)
+  const buffer = await contentFor(ctx, 'thumb_image.png')
+  t.snapshot(buffer.toString())
+})
+
+test('handles min', async t => {
+  const ctx = await sandbox('test1')
+
+  mockConfig(ctx, 'responsive_images', {
+    pattern: '*.png',
+    sizes: {
+      thumb: {width: 100, height: 50, min: true}
+    }
+  })
+
+  await process(ctx)
+  const buffer = await contentFor(ctx, 'thumb_image.png')
+  const {width, height} = await getImageDimensions(buffer)
+  t.is(width, 100)
+  t.is(height, 100)
+})
+
+test('handles max', async t => {
+  const ctx = await sandbox('test1')
+
+  mockConfig(ctx, 'responsive_images', {
+    pattern: '*.png',
+    sizes: {
+      thumb: {width: 100, height: 50, max: true}
+    }
+  })
+
+  await process(ctx)
+  const buffer = await contentFor(ctx, 'thumb_image.png')
+  const {width, height} = await getImageDimensions(buffer)
+  t.is(width, 50)
+  t.is(height, 50)
+})
+
+test('handles ignoreAspectRatio', async t => {
+  const ctx = await sandbox('test1')
+
+  mockConfig(ctx, 'responsive_images', {
+    pattern: '*.png',
+    sizes: {
+      thumb: {width: 100, height: 50, ignoreAspectRatio: true}
+    }
+  })
+
+  await process(ctx)
+  const buffer = await contentFor(ctx, 'thumb_image.png')
+  t.snapshot(buffer.toString())
 })

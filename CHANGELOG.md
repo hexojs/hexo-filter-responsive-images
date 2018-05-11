@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+### Added
+- support for sharp API options
+  - crop
+  - embed
+  - ignoreAspectRatio
+  - max
+  - min
+  - withoutEnlargement
 
 ## [1.1.0]
 ### Added
