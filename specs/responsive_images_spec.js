@@ -266,3 +266,39 @@ test('handles ignoreAspectRatio', async t => {
   const buffer = await contentFor(ctx, 'thumb_image.png')
   t.snapshot(buffer.toString())
 })
+
+test('handles quality', async t => {
+  const ctx = await sandbox('test3')
+
+  mockConfig(ctx, 'responsive_images', {
+    pattern: '*.jpg',
+    sizes: {
+      high_quality: {width: 100, height: 50, quality: 100},
+      low_quality: {width: 100, height: 50, quality: 10}
+    }
+  })
+
+  await process(ctx)
+  const highQualityImage = await contentFor(ctx, 'high_quality_image.jpg')
+  const lowQualityImage = await contentFor(ctx, 'low_quality_image.jpg')
+
+  const highQualityImageSize = highQualityImage.length
+  const lowQualityImageSize = lowQualityImage.length
+  t.true(highQualityImageSize > lowQualityImageSize)
+})
+
+test('keeps image type with quality setting', async t => {
+  const ctx = await sandbox('test1')
+
+  mockConfig(ctx, 'responsive_images', {
+    pattern: '*.png',
+    sizes: {
+      thumb: {width: 100, height: 50, quality: 80}
+    }
+  })
+
+  await process(ctx)
+  const buffer = await contentFor(ctx, 'thumb_image.png')
+  const result = await sharp(buffer).toBuffer({resolveWithObject: true})
+  t.is(result.info.format, 'png')
+})
