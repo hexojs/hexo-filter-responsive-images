@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.3.0]
+### Added
+- `quality` option
+
 ## [1.2.0]
 ### Added
 - support for sharp API options
