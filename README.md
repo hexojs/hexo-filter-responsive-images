@@ -44,6 +44,7 @@ sizes:
     max: Boolean
     min: Boolean
     withoutEnlargement: Boolean
+    quality: Number
 ```
 
 Put a size name as a key. It will be used as a prefix for the generated file names.
@@ -51,6 +52,9 @@ Use `width` and `height` keys to configure dimensions. Skip one for auto-scale.
 
 You can specify `options` that will be passed to the `resize` method.
 For more information and all possible values for `options` check http://sharp.pixelplumbing.com/en/stable/api-resize/
+
+You can specify `quality` option, a number from 0 to 100, which controls quality of the output file.
+Works with jpg, webp and tiff format.
 
 Finally, you can specify one or more sharp API specific options. You can:
  - request to use `min`, `max` or `embed` strategy for resizing
