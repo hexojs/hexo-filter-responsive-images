@@ -53,5 +53,5 @@ test('performance comparison', async t => {
 
   await run(suite)
 
-  t.is(suite.filter('fastest').map('name'), ['parallel'])
+  t.deepEqual(suite.filter('fastest').map('name'), ['parallel'])
 })

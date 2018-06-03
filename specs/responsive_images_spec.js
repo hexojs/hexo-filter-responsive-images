@@ -32,11 +32,49 @@ test('renders prefixed asset', async t => {
   t.is(hasRoute(ctx, 'huge_image.png'), true)
 })
 
+test('renders prefixed asset in parallel', async t => {
+  const ctx = await sandbox('test1')
+
+  mockConfig(ctx, 'responsive_images', {
+    pattern: '*.png',
+    parallel: true,
+    sizes: {
+      thumb: {width: 100},
+      small: {width: 500},
+      huge: {width: 1000},
+    }
+  })
+
+  await process(ctx)
+
+  t.is(hasRoute(ctx, 'thumb_image.png'), true)
+  t.is(hasRoute(ctx, 'small_image.png'), true)
+  t.is(hasRoute(ctx, 'huge_image.png'), true)
+})
+
 test('renders resized asset', async t => {
   const ctx = await sandbox('test1')
 
   mockConfig(ctx, 'responsive_images', {
     pattern: '*.png',
+    sizes: {
+      thumb: {width: 100}
+    }
+  })
+
+  await process(ctx)
+  const buffer = await contentFor(ctx, 'thumb_image.png')
+  const {width, height} = await getImageDimensions(buffer)
+  t.is(width, 100)
+  t.is(height, 100)
+})
+
+test('renders resized asset in parallel', async t => {
+  const ctx = await sandbox('test1')
+
+  mockConfig(ctx, 'responsive_images', {
+    pattern: '*.png',
+    parallel: true,
     sizes: {
       thumb: {width: 100}
     }

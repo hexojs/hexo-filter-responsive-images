@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "bluebird": "^3.5.1",
+    "fork-pool": "^2.0.0",
     "minimatch": "^3.0.4",
     "sharp": "^0.19.1",
     "stream-to-array": "^2.3.0",
