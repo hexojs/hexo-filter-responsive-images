@@ -7,7 +7,8 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "ava specs/*_spec.js"
+    "test": "ava specs/*_spec.js",
+    "test:perf": "ava specs/benchmark.js"
   },
   "repository": {
     "type": "git",
@@ -31,8 +32,9 @@
   },
   "devDependencies": {
     "ava": "^1.0.0-beta.3",
+    "benchmark": "^2.1.4",
     "hexo": "^3.6.0",
-    "hexo-test-utils": "0.0.3"
+    "hexo-test-utils": "^0.3.0"
   },
   "ava": {
     "snapshotDir": "specs/snapshots"
