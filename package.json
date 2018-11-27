@@ -30,7 +30,7 @@
     "stream-to-promise": "^2.2.0"
   },
   "devDependencies": {
-    "ava": "^1.0.0-beta.3",
+    "ava": "^1.0.0-rc.2",
     "hexo": "^3.6.0",
     "hexo-test-utils": "0.3.1"
   },
