@@ -267,6 +267,19 @@ test('handles ignoreAspectRatio', async t => {
   t.snapshot(buffer.toString())
 })
 
+test('handles crop', async t => {
+  const ctx = await sandbox('test1')
+  mockConfig(ctx, 'responsive_images', {
+    pattern: '*.png',
+    sizes: {
+      thumb: {width: 50, height: 100, crop: 'east'}
+    }
+  })
+  await process(ctx)
+  const buffer = await contentFor(ctx, 'thumb_image.png')
+  t.snapshot(buffer.toString())
+})
+
 test('handles quality', async t => {
   const ctx = await sandbox('test3')
 
