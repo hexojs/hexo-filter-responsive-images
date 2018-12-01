@@ -203,7 +203,7 @@ test('handles withoutEnlargement', async t => {
   t.is(height, 600)
 })
 
-test('handles embed', async t => {
+test('handles deprecated embed', async t => {
   const ctx = await sandbox('test1')
 
   mockConfig(ctx, 'responsive_images', {
@@ -218,7 +218,7 @@ test('handles embed', async t => {
   t.snapshot(buffer.toString('base64'), {id: 'embed'})
 })
 
-test('handles min', async t => {
+test('handles deprecated min', async t => {
   const ctx = await sandbox('test1')
 
   mockConfig(ctx, 'responsive_images', {
@@ -235,7 +235,7 @@ test('handles min', async t => {
   t.is(height, 100)
 })
 
-test('handles max', async t => {
+test('handles deprecated max', async t => {
   const ctx = await sandbox('test1')
 
   mockConfig(ctx, 'responsive_images', {
@@ -252,7 +252,7 @@ test('handles max', async t => {
   t.is(height, 50)
 })
 
-test('handles ignoreAspectRatio', async t => {
+test('handles deprecated ignoreAspectRatio', async t => {
   const ctx = await sandbox('test1')
 
   mockConfig(ctx, 'responsive_images', {
@@ -267,12 +267,89 @@ test('handles ignoreAspectRatio', async t => {
   t.snapshot(buffer.toString('base64'), {id: 'ignoreAspectRatio'})
 })
 
-test('handles crop', async t => {
+test('handles deprecated crop', async t => {
   const ctx = await sandbox('test1')
   mockConfig(ctx, 'responsive_images', {
     pattern: '*.png',
     sizes: {
       thumb: {width: 50, height: 100, crop: 'east'}
+    }
+  })
+  await process(ctx)
+  const buffer = await contentFor(ctx, 'thumb_image.png')
+  t.snapshot(buffer.toString('base64'), {id: 'crop'})
+})
+
+test('handles embed', async t => {
+  const ctx = await sandbox('test1')
+
+  mockConfig(ctx, 'responsive_images', {
+    pattern: '*.png',
+    sizes: {
+      thumb: {width: 100, height: 50, fit: 'contain'}
+    }
+  })
+
+  await process(ctx)
+  const buffer = await contentFor(ctx, 'thumb_image.png')
+  t.snapshot(buffer.toString('base64'), {id: 'embed'})
+})
+
+test('handles min', async t => {
+  const ctx = await sandbox('test1')
+
+  mockConfig(ctx, 'responsive_images', {
+    pattern: '*.png',
+    sizes: {
+      thumb: {width: 100, height: 50, fit: 'outside'}
+    }
+  })
+
+  await process(ctx)
+  const buffer = await contentFor(ctx, 'thumb_image.png')
+  const {width, height} = await getImageDimensions(buffer)
+  t.is(width, 100)
+  t.is(height, 100)
+})
+
+test('handles max', async t => {
+  const ctx = await sandbox('test1')
+
+  mockConfig(ctx, 'responsive_images', {
+    pattern: '*.png',
+    sizes: {
+      thumb: {width: 100, height: 50, fit: 'inside'}
+    }
+  })
+
+  await process(ctx)
+  const buffer = await contentFor(ctx, 'thumb_image.png')
+  const {width, height} = await getImageDimensions(buffer)
+  t.is(width, 50)
+  t.is(height, 50)
+})
+
+test('handles ignoreAspectRatio', async t => {
+  const ctx = await sandbox('test1')
+
+  mockConfig(ctx, 'responsive_images', {
+    pattern: '*.png',
+    sizes: {
+      thumb: {width: 100, height: 50, fit: 'fill'}
+    }
+  })
+
+  await process(ctx)
+  const buffer = await contentFor(ctx, 'thumb_image.png')
+  t.snapshot(buffer.toString('base64'), {id: 'ignoreAspectRatio'})
+})
+
+test('handles crop', async t => {
+  const ctx = await sandbox('test1')
+  mockConfig(ctx, 'responsive_images', {
+    pattern: '*.png',
+    sizes: {
+      thumb: {width: 50, height: 100, fit: 'cover', position: 'east'}
     }
   })
   await process(ctx)

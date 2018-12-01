@@ -37,32 +37,55 @@ sizes:
   [name]:
     width: Number
     height: Number
-    options: Object
-    crop: String
-    embed: Boolean|String
-    ignoreAspectRatio: Boolean
-    max: Boolean
-    min: Boolean
-    withoutEnlargement: Boolean
-    quality: Number
+    ...
 ```
 
 Put a size name as a key. It will be used as a prefix for the generated file names.
 Use `width` and `height` keys to configure dimensions. Skip one for auto-scale.
 
-You can specify `options` that will be passed to the `resize` method.
-For more information and all possible values for `options` check http://sharp.pixelplumbing.com/en/stable/api-resize/
+Everything else will be passed to the `resize` method of sharp. See the most important
+options listed below.
 
-You can specify `quality` option, a number from 0 to 100, which controls quality of the output file.
+#### Resizing options
+
+```
+fit: String
+```
+
+After sharp documentation:
+- `cover`: Default value. Crops to cover both provided dimensions.
+- `contain`: Embeds within both provided dimensions.
+- `fill`: Ignores the aspect ratio of the input and stretch to both provided dimensions.
+- `inside`: Resize the image to be as large as possible while ensuring its dimensions are less than or equal to both those specified.
+            Preserves aspect ratio.
+- `outside`: Resize the image to be as small as possible while ensuring its dimensions are greater than or equal to both those specified.
+             Preserves aspect ratio.
+
+```
+position: String
+```
+
+
+Works for `cover` or `contain` fit setting. Should be value from either `sharp.position` or `sharp.gravity`
+list, for example 'right' or 'northeast'
+
+```
+withoutEnlargement: Boolean
+```
+
+
+When true, do not enlarge if the width or height are already less than
+the specified dimensions
+
+```
+quality: Number
+```
+
+It's a number from 0 to 100, which controls quality of the output file.
 Works with jpg, webp and tiff format.
 
-Finally, you can specify one or more sharp API specific options. You can:
- - request to use `min`, `max` or `embed` strategy for resizing
- - specify strategy or gravity for cropping with `crop` option
- - disable images enlargement by setting `withoutEnlargement` to true
- - resize to exact dimensions by setting `ignoreAspectRatio` to true
-
-All information about sharp API specific options can be found in the [sharp documentation](http://sharp.pixelplumbing.com/en/stable/api-resize/)
+Full information about sharp API specific options can be found in the
+[sharp documentation](http://sharp.pixelplumbing.com/en/stable/api-resize/)
 
 ### Priority
 
@@ -144,7 +167,7 @@ responsive_images:
     small:
       width: 800
       height: 800
-      max: true
+      fit: inside
     large:
       width: 2000
       withoutEnlargement: true
