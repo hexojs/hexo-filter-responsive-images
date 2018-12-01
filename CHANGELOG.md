@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.4.0]
+### Changed
+- update sharp to 0.21
+- update bluebird to 3.5.3
+
 ## [1.3.0]
 ### Added
 - `quality` option
