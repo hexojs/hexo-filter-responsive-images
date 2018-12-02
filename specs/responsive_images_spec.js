@@ -215,7 +215,7 @@ test('handles embed', async t => {
 
   await process(ctx)
   const buffer = await contentFor(ctx, 'thumb_image.png')
-  t.snapshot(buffer.toString())
+  t.snapshot(buffer.toString('base64'), {id: 'embed'})
 })
 
 test('handles min', async t => {
@@ -264,7 +264,7 @@ test('handles ignoreAspectRatio', async t => {
 
   await process(ctx)
   const buffer = await contentFor(ctx, 'thumb_image.png')
-  t.snapshot(buffer.toString())
+  t.snapshot(buffer.toString('base64'), {id: 'ignoreAspectRatio'})
 })
 
 test('handles crop', async t => {
@@ -277,7 +277,7 @@ test('handles crop', async t => {
   })
   await process(ctx)
   const buffer = await contentFor(ctx, 'thumb_image.png')
-  t.snapshot(buffer.toString())
+  t.snapshot(buffer.toString('base64'), {id: 'crop'})
 })
 
 test('handles quality', async t => {
