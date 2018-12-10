@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.4.1]
+### Changed
+- configuration file follows the new sharp API
+  backward compatibility is preserved though
+  a compilation warning suggests steps to upgrade config file
+
 ## [1.4.0]
 ### Changed
 - update sharp to 0.21
