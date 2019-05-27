@@ -23,7 +23,7 @@
     "hexo": "3.x"
   },
   "dependencies": {
-    "bluebird": "^3.5.4",
+    "bluebird": "^3.5.5",
     "minimatch": "^3.0.4",
     "sharp": "^0.22.1",
     "stream-to-array": "^2.3.0",
