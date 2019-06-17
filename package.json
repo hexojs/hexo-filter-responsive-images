@@ -1,6 +1,6 @@
 {
   "name": "hexo-filter-responsive-images",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Generate multiple version of images for responsive Hexo blogs",
   "main": "index.js",
   "directories": {
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hexojs/hexo-responsive-images.git"
+    "url": "git+https://github.com/hexojs/hexo-filter-responsive-images.git"
   },
   "author": "ertrzyiks <mateusz.derks@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ertrzyiks/hexo-responsive-images/issues"
+    "url": "https://github.com/hexojs/hexo-filter-responsive-images/issues"
   },
-  "homepage": "https://github.com/ertrzyiks/hexo-responsive-images#readme",
+  "homepage": "https://github.com/hexojs/hexo-filter-responsive-images#readme",
   "peerDependencies": {
     "hexo": "3.x"
   },

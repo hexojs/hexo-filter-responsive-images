@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.4.2]
+### Changed
+- update dependencies
+- fixed URLs in package.json
+
 ## [1.4.1]
 ### Changed
 - configuration file follows the new sharp API
