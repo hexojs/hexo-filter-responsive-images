@@ -1,7 +1,7 @@
 # hexo-filter-responsive-images
 
-![](https://travis-ci.org/hexojs/hexo-filter-responsive-images.svg?branch=master)
-[![npm version](https://badge.fury.io/js/hexo-filter-responsive-images.svg)](https://badge.fury.io/js/hexo-filter-responsive-images)
+[![build status](https://travis-ci.org/hexojs/hexo-filter-responsive-images.svg?branch=master)](https://travis-ci.org/hexojs/hexo-filter-responsive-images)
+[![npm version](https://badge.fury.io/js/hexo-filter-responsive-images.svg)](https://www.npmjs.com/package/hexo-filter-responsive-images)
 
 Generate mutliple versions of images for responsive Hexo 3.x blogs
 It uses [sharp](https://github.com/lovell/sharp) library to transform images.
