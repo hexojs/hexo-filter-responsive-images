@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "bluebird": "^3.5.5",
-    "minimatch": "^3.0.4",
+    "micromatch": "^4.0.2",
     "sharp": "^0.23.0",
     "stream-to-array": "^2.3.0",
     "stream-to-promise": "^2.2.0"
