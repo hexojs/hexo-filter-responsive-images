@@ -3,6 +3,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.4.3]
+- replace minimatch with micromatch (thanks @curbengh)
+
 ## [1.4.2]
 ### Changed
 - update dependencies
