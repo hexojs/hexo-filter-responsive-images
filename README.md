@@ -27,7 +27,7 @@ Put all your configuration under `responsive_images` key.
 patten: String
 ```
 
-A [minimatch](https://github.com/isaacs/minimatch) pattern. All matching assets will use the
+A [micromatch](https://github.com/micromatch/micromatch) pattern. All matching assets will use the
 assigned size rules.
 
 ### Sizes
