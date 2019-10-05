@@ -23,14 +23,14 @@
     "hexo": "3.x"
   },
   "dependencies": {
-    "bluebird": "^3.5.5",
+    "bluebird": "^3.7.0",
     "micromatch": "^4.0.2",
-    "sharp": "^0.23.0",
+    "sharp": "^0.23.1",
     "stream-to-array": "^2.3.0",
     "stream-to-promise": "^2.2.0"
   },
   "devDependencies": {
-    "ava": "^2.1.0",
+    "ava": "^2.4.0",
     "hexo": "^3.9.0",
     "hexo-test-utils": "0.3.1"
   },
