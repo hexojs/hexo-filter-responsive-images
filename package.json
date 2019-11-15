@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/hexojs/hexo-filter-responsive-images#readme",
   "peerDependencies": {
-    "hexo": "3.x, 4.x"
+    "hexo": "3.x || 4.x"
   },
   "dependencies": {
     "bluebird": "^3.7.0",
@@ -32,7 +32,7 @@
   "devDependencies": {
     "ava": "^2.4.0",
     "hexo": "^4.0.0",
-    "hexo-test-utils": "0.3.1"
+    "hexo-test-utils": "^0.4.1"
   },
   "ava": {
     "snapshotDir": "specs/snapshots"
