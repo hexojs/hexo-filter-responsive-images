@@ -1,6 +1,6 @@
 {
   "name": "hexo-filter-responsive-images",
-  "version": "1.4.3",
+  "version": "1.5.0",
   "description": "Generate multiple version of images for responsive Hexo blogs",
   "main": "index.js",
   "directories": {
