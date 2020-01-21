@@ -7,7 +7,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "ava specs/*_spec.js"
+    "test": "ava"
   },
   "repository": {
     "type": "git",
@@ -30,11 +30,16 @@
     "stream-to-promise": "^2.2.0"
   },
   "devDependencies": {
-    "ava": "^2.4.0",
+    "@ava/babel": "^1.0.0",
+    "ava": "^3.0",
     "hexo": "^4.0.0",
     "hexo-test-utils": "^0.4.1"
   },
   "ava": {
+    "files": [
+      "specs/*_spec.js"
+    ],
+    "babel": true,
     "snapshotDir": "specs/snapshots"
   }
 }
