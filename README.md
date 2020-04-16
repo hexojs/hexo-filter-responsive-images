@@ -173,23 +173,36 @@ responsive_images:
       withoutEnlargement: true
 ```
 
-## View helper
+## Usage
 
 To get the responsive image URL you can just refer to it's prefixed version. 
-For a programmatic usage, you can use a view helper:
+For a programmatic usage in theme templates, you can use a view helper:
 
-```
+```javascript
 image_version(image_path, {prefix: ''})
 ```
 
 For example:
 
-```
+```javascript
 image_version('photo.jpg', {prefix: 'small')
 ```
 
 It returns `'small_photo.jpg'`
 
+For usage in generated content you can hook into the `after_post_render` filter.
+
+```javascript
+const image_version = hexo.extend.helper.get('image_version');
+hexo.extend.filter.register('after_post_render', data => {
+  data.content = data.content.replace(/<img([^>]+)?>/igm, (_, attr) => {
+    attr = attr.replace(/src="([^"]+)?"/, (_, src) => {
+      return `src="${image_version(src, { prefix: 'thumb' })}"`;
+    })
+    return `<img${attr}>`;
+  });
+});
+```
 
 ## Development
 
