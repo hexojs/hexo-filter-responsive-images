@@ -27,7 +27,7 @@
     "micromatch": "^4.0.2",
     "sharp": "^0.25.1",
     "stream-to-array": "^2.3.0",
-    "stream-to-promise": "^2.2.0"
+    "stream-to-promise": "^3.0.0"
   },
   "devDependencies": {
     "@ava/babel": "^1.0.0",
