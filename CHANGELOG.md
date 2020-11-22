@@ -2,6 +2,8 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+## [1.6.0]
+- support Hexo 5
 - update dependencies
 
 ## [1.5.0]
