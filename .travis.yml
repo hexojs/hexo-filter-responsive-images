@@ -1,8 +1,9 @@
 language: node_js
 node_js:
- - "10"
+ - "12"
 
 env:
+ - HEXO_VERSION=5.x
  - HEXO_VERSION=4.x
  - HEXO_VERSION=3.x
 
