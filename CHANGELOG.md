@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+## [1.7.0]
+- update sharp to 0.27.2
+- fix rotation problem #136 (thanks @SeriesOfUnlikelyExplanations)
 ## [1.6.0]
 - support Hexo 5
 - update dependencies
