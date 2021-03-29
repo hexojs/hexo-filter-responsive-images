@@ -13,8 +13,11 @@ on:
 
 jobs:
   unit_test:
-    name: 'Unit tests'
+    name: 'Unit tests using Hexo ${{ matrix.hexo }}'
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        hexo: [3.x, 4.x, 5.x]
 
     steps:
       - name: Checkout
@@ -34,6 +37,9 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+
+      - name: Install specific hexo version
+        run: yarn add hexo@${{ matrix.hexo }}
 
       - name: Run unit tests
         run: yarn test
