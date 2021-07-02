@@ -24,7 +24,7 @@ Put all your configuration under `responsive_images` key.
 
 ### Pattern
 ```
-patten: String
+pattern: String
 ```
 
 A [micromatch](https://github.com/micromatch/micromatch) pattern. All matching assets will use the
