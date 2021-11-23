@@ -33,7 +33,7 @@
     "@ava/babel": "^2.0.0",
     "ava": "^3.15.0",
     "hexo": "^5.4.0",
-    "hexo-test-utils": "^0.4.1"
+    "hexo-test-utils": "^0.5.0"
   },
   "ava": {
     "files": [
