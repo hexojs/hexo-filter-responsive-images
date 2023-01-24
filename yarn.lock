@@ -1622,10 +1622,10 @@ hexo-log@^2.0.0:
   dependencies:
     chalk "^4.0.0"
 
-hexo-test-utils@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/hexo-test-utils/-/hexo-test-utils-0.5.0.tgz#0cb90b0510968557110484386b82701d2c85931c"
-  integrity sha512-H26pUvibttobfP3O+urIBL0FwM8bFSz0RsqRQAt3xV+EF8fdlQlUHFImLRdsTzVYVmRG9oCUm46WQiT53Tryng==
+hexo-test-utils@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/hexo-test-utils/-/hexo-test-utils-0.6.0.tgz#58e2cd0cfa51572ac720005abd4e973ae9a47955"
+  integrity sha512-KqG9LzuTOQslD1YJhuiGoxodSRm+QDTftp0kfua9ztfv4J6igpe7xh861RaQxVAgkP5rFcAlVmXSxIeaX/bvaw==
   dependencies:
     bluebird "^3.5.1"
     stream-to-promise "^2.2.0"
