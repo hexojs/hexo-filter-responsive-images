@@ -1,6 +1,6 @@
 # hexo-filter-responsive-images
 
-[![build status](https://travis-ci.org/hexojs/hexo-filter-responsive-images.svg?branch=master)](https://travis-ci.org/hexojs/hexo-filter-responsive-images)
+[![build status](https://img.shields.io/github/actions/workflow/status/hexojs/hexo-filter-responsive-images/ci.yml?branch=master&label=test)](https://github.com/hexojs/hexo-filter-responsive-images/actions?query=workflow%3ACI)
 [![npm version](https://badge.fury.io/js/hexo-filter-responsive-images.svg)](https://www.npmjs.com/package/hexo-filter-responsive-images)
 
 Generate mutliple versions of images for responsive blogs using Hexo >= 3.x.
