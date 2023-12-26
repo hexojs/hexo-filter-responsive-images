@@ -287,7 +287,7 @@ brace-expansion@^1.1.7:
     balanced-match "^1.0.0"
     concat-map "0.0.1"
 
-braces@^3.0.1, braces@~3.0.2:
+braces@^3.0.2, braces@~3.0.2:
   version "3.0.2"
   resolved "https://registry.npmjs.org/braces/-/braces-3.0.2.tgz"
   dependencies:
@@ -1324,11 +1324,11 @@ micro-memoize@^4.1.2:
   resolved "https://registry.yarnpkg.com/micro-memoize/-/micro-memoize-4.1.2.tgz#ce719c1ba1e41592f1cd91c64c5f41dcbf135f36"
 
 micromatch@^4.0.4:
-  version "4.0.4"
-  resolved "https://registry.npmjs.org/micromatch/-/micromatch-4.0.4.tgz"
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-4.0.5.tgz#bc8999a7cbbf77cdc89f132f6e467051b49090c6"
   dependencies:
-    braces "^3.0.1"
-    picomatch "^2.2.3"
+    braces "^3.0.2"
+    picomatch "^2.3.1"
 
 mimic-fn@^2.1.0:
   version "2.1.0"
@@ -1589,7 +1589,7 @@ picocolors@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/picocolors/-/picocolors-1.0.0.tgz#cb5bdc74ff3f51892236eaf79d68bc44564ab81c"
 
-picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.2, picomatch@^2.2.3:
+picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.2, picomatch@^2.3.1:
   version "2.3.1"
   resolved "https://registry.npmjs.org/picomatch/-/picomatch-2.3.1.tgz"
 
