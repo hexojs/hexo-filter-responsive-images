@@ -4,27 +4,22 @@ on:
   push:
     branches: [master]
   pull_request:
-    types: [
-      synchronize,
-      opened,
-      reopened,
-      ready_for_review
-    ]
+    types: [synchronize, opened, reopened, ready_for_review]
 
 jobs:
   unit_test:
-    name: 'Unit tests using Hexo ${{ matrix.hexo }}'
+    name: "Unit tests using Hexo ${{ matrix.hexo }}"
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        hexo: [3.x, 4.x, 5.x, 6.x]
+        hexo: [3.x, 4.x, 5.x, 6.x, 7.x]
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '18'
+          node-version: "18"
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -43,4 +38,3 @@ jobs:
 
       - name: Run unit tests
         run: yarn test
-
